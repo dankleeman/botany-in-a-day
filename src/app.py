@@ -9,8 +9,6 @@ from inat import load_question
 app = Flask(__name__)
 app.secret_key = config.secret_key or os.urandom(24)
 
-# TODO: Migration
-######### MIGRATE TO THEMES FILE ####################
 THEMES = {
     "light": {
         "bg": "#f5f0e8",
@@ -69,8 +67,6 @@ def _is_dark(theme: dict) -> bool:
     return False
 
 
-##############################################
-#
 def _render(template, **kwargs):
     theme = _get_theme()
     return render_template(

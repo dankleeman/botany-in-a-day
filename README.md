@@ -1,6 +1,6 @@
 # Botany in a Day
 
-A web-based plant family quiz inspired by Thomas Elpel's *Botany in a Day*. Test your ability to identify the 8 starter plant families using real observation photos from [iNaturalist](https://www.inaturalist.org/).
+A web-based plant family quiz inspired by Thomas Elpel's [*Botany in a Day*](https://hopspress.com/Books/Botany_in_a_Day.htm). Test your ability to identify the 8 starter plant families using real observation photos from [iNaturalist](https://www.inaturalist.org/).
 
 ## How It Works
 
@@ -103,4 +103,4 @@ This app uses the [iNaturalist API](https://api.inaturalist.org/v1/docs/) to fet
 The app prefetches observations in batches (default 20 per family) so that answering questions doesn't require a request each time — only loading a new batch does. Normal quiz usage should stay well within iNaturalist's limits. If you're self-hosting for multiple users, consider increasing `BATCH_SIZE` to reduce request frequency.
 
 ## License
-XXX
+This project is licensed with the MIT license as detailed in the LICENSE file in this repository.
