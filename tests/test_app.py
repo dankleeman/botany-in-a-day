@@ -1,3 +1,4 @@
+import dataclasses
 from unittest.mock import patch
 
 from app import _is_dark, _theme_css, app
@@ -328,7 +329,7 @@ def test_theme_css_dark_uses_dark_button_bg():
 
 # --- config-override integration tests ---
 
-_BASE_CONFIG = dict(
+_BASE_CONFIG = Config(
     secret_key="test",
     batch_size=20,
     place_id="97394",
@@ -343,7 +344,7 @@ _BASE_CONFIG = dict(
 
 
 def test_build_version_shown_in_debug_mode():
-    cfg = Config(**{**_BASE_CONFIG, "debug": True, "build_version": "v9.9.9"})
+    cfg = dataclasses.replace(_BASE_CONFIG, debug=True, build_version="v9.9.9")
     fake_q = {
         "family": "Asteraceae",
         "common": "Aster",
@@ -359,7 +360,7 @@ def test_build_version_shown_in_debug_mode():
 
 
 def test_build_version_hidden_when_not_debug():
-    cfg = Config(**{**_BASE_CONFIG, "debug": False, "build_version": "v9.9.9"})
+    cfg = dataclasses.replace(_BASE_CONFIG, debug=False, build_version="v9.9.9")
     fake_q = {
         "family": "Asteraceae",
         "common": "Aster",
@@ -375,7 +376,7 @@ def test_build_version_hidden_when_not_debug():
 
 
 def test_theme_bg_override_applied_to_render():
-    cfg = Config(**{**_BASE_CONFIG, "theme_bg": "#abcdef"})
+    cfg = dataclasses.replace(_BASE_CONFIG, theme_bg="#abcdef")
     fake_q = {
         "family": "Asteraceae",
         "common": "Aster",
@@ -391,7 +392,7 @@ def test_theme_bg_override_applied_to_render():
 
 
 def test_theme_locked_when_config_has_overrides():
-    cfg = Config(**{**_BASE_CONFIG, "theme_bg": "#abcdef"})
+    cfg = dataclasses.replace(_BASE_CONFIG, theme_bg="#abcdef")
     fake_q = {
         "family": "Asteraceae",
         "common": "Aster",
