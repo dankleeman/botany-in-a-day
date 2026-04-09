@@ -14,7 +14,7 @@ from inat import (
 
 
 def test_families_have_required_keys():
-    for name, info in FAMILIES.items():
+    for _name, info in FAMILIES.items():
         assert "common" in info
         assert "taxon_id" in info
         assert isinstance(info["taxon_id"], int)

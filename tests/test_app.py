@@ -415,9 +415,7 @@ def test_toggle_theme_from_quiz_appends_keep():
 
 def test_toggle_theme_from_quiz_with_existing_query_no_double_keep():
     with app.test_client() as client:
-        resp = client.get(
-            "/toggle-theme", headers={"Referer": "http://localhost/quiz?keep=1"}
-        )
+        resp = client.get("/toggle-theme", headers={"Referer": "http://localhost/quiz?keep=1"})
     assert resp.headers["Location"].count("?") == 1
 
 
