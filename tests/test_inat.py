@@ -138,8 +138,11 @@ def test_get_next_observation_returns_none_when_api_empty():
 
 def test_fetch_json_raises_inat_api_error_on_http_error():
     error = urllib.error.HTTPError(
-        url="https://example.com", code=503, msg="Service Unavailable",
-        hdrs=http.client.HTTPMessage(), fp=None,
+        url="https://example.com",
+        code=503,
+        msg="Service Unavailable",
+        hdrs=http.client.HTTPMessage(),
+        fp=None,
     )
     with patch("inat.urllib.request.urlopen", side_effect=error):
         with pytest.raises(InatAPIError):
