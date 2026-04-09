@@ -4,7 +4,7 @@ from flask import Flask, redirect, render_template, request, session, url_for
 
 from config import config
 from families import DEFAULT_FAMILIES, FAMILIES
-from inat import load_question
+from inat import InatAPIError, load_question
 
 app = Flask(__name__)
 app.secret_key = config.secret_key or os.urandom(24)
@@ -97,7 +97,25 @@ def index():
 def quiz():
     question = session.get("current") if request.args.get("keep") else None
     if not question:
-        question = load_question(session.get("active_families"))
+        try:
+            question = load_question(session.get("active_families"))
+        except InatAPIError:
+            return _render(
+                "quiz.html",
+                error="iNaturalist is currently unavailable. Please try again later.",
+                question_num=session.get("question_num", 0),
+                score=session.get("score", 0),
+                total=session.get("total", 0),
+                result=None,
+                photo_url="",
+                families=FAMILIES,
+                correct_family="",
+                correct_common="",
+                species="",
+                chosen_family="",
+                attribution="",
+                obs_url="",
+            )
     if not question:
         return _render(
             "quiz.html",

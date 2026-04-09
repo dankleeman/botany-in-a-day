@@ -1,8 +1,13 @@
+import http.client
+import urllib.error
 from unittest.mock import MagicMock, patch
+
+import pytest
 
 from inat import (
     FAMILIES,
     FAMILY_NAMES,
+    InatAPIError,
     _fetch_batch,
     _observation_queues,
     fetch_json,
@@ -129,3 +134,23 @@ def test_get_next_observation_returns_none_when_api_empty():
         result = get_next_observation(family)
     assert result is None
     _observation_queues.pop(family, None)
+
+
+def test_fetch_json_raises_inat_api_error_on_http_error():
+    error = urllib.error.HTTPError(
+        url="https://example.com",
+        code=503,
+        msg="Service Unavailable",
+        hdrs=http.client.HTTPMessage(),
+        fp=None,
+    )
+    with patch("inat.urllib.request.urlopen", side_effect=error):
+        with pytest.raises(InatAPIError):
+            fetch_json("https://example.com")
+
+
+def test_fetch_json_raises_inat_api_error_on_url_error():
+    error = urllib.error.URLError(reason="Name or service not known")
+    with patch("inat.urllib.request.urlopen", side_effect=error):
+        with pytest.raises(InatAPIError):
+            fetch_json("https://example.com")
