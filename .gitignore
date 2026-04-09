@@ -14,4 +14,4 @@ wheels/
 
 # Dev
 .ruff_cache/
-.coverage
+*.coverage
