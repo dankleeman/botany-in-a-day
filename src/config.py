@@ -20,7 +20,7 @@ class Config:
     build_version: str
 
     @classmethod
-    def from_env(cls) -> "Config":
+    def from_env(cls) -> Config:
         return cls(
             secret_key=os.environ.get("SECRET_KEY", ""),
             batch_size=int(os.environ.get("BATCH_SIZE", "20")),
