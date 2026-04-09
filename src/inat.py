@@ -1,5 +1,6 @@
 import json
 import random
+import urllib.error
 import urllib.request
 
 from config import config
@@ -11,10 +12,17 @@ API_BASE = "https://api.inaturalist.org/v1"
 _observation_queues: dict[str, list[dict]] = {}
 
 
+class InatAPIError(Exception):
+    pass
+
+
 def fetch_json(url: str) -> dict:
     req = urllib.request.Request(url, headers={"User-Agent": "BotanyQuiz/1.0"})
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        return json.loads(resp.read().decode())
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return json.loads(resp.read().decode())
+    except urllib.error.URLError as e:
+        raise InatAPIError(f"iNaturalist unavailable: {e.reason}") from e
 
 
 def _fetch_batch(taxon_id: int) -> list[dict]:

@@ -3,6 +3,7 @@ from unittest.mock import patch
 
 from app import _is_dark, _theme_css, app
 from config import Config
+from inat import InatAPIError
 
 
 def test_index_redirects():
@@ -34,6 +35,14 @@ def test_quiz_handles_no_question():
             resp = client.get("/quiz")
             assert resp.status_code == 200
             assert b"Try Again" in resp.data
+
+
+def test_quiz_handles_inat_unavailable():
+    with patch("app.load_question", side_effect=InatAPIError("503")):
+        with app.test_client() as client:
+            resp = client.get("/quiz")
+            assert resp.status_code == 200
+            assert b"currently unavailable" in resp.data
 
 
 def test_answer_correct():
