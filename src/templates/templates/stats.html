@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Session Stats - Botany in a Day{% endblock %}
+
+{% block extra_css %}
+        .overall {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin: 0.5rem 0 1.5rem;
+        }
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        th, td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--table-border);
+            white-space: nowrap;
+        }
+        th { color: var(--accent); font-size: 0.9rem; }
+        td.num { text-align: right; }
+        td.family-name { white-space: normal; min-width: 10rem; }
+        .bar-cell { width: 30%; }
+        .bar-bg {
+            background: var(--bar-bg);
+            border-radius: 4px;
+            height: 1.2rem;
+            overflow: hidden;
+        }
+        .bar-fill {
+            background: var(--btn-border);
+            height: 100%;
+            border-radius: 4px;
+        }
+        .pct { font-size: 0.85rem; color: var(--muted); }
+        .section-heading {
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .actions .btn { margin: 0; }
+        input[type="checkbox"] {
+            appearance: none;
+            width: 1.1rem;
+            height: 1.1rem;
+            border: 2px solid var(--btn-border);
+            border-radius: 3px;
+            background: var(--btn-bg);
+            cursor: pointer;
+            vertical-align: middle;
+            position: relative;
+        }
+        input[type="checkbox"]:checked {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        input[type="checkbox"]:checked::after {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 0px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .inactive { opacity: 0.5; }
+{% endblock %}
+
+{% block content %}
+    <h1>Session Stats</h1>
+    <div class="overall">
+        Score: {{ score }}/{{ total }}
+        {% if total > 0 %} ({{ (score / total * 100) | int }}%){% endif %}
+    </div>
+
+    <h2 class="section-heading">Families</h2>
+    <form id="family-form" method="post" action="{{ url_for('update_families') }}">
+    <table>
+        <tr>
+            <th>Active</th>
+            <th>Family</th>
+            <th>Correct</th>
+            <th>Total</th>
+            <th class="bar-cell">Accuracy</th>
+        </tr>
+        {% for family, info in families.items() | sort %}
+        {% set stats = family_stats.get(family, {}) %}
+        {% set is_active = family in active_families %}
+        <tr class="{{ '' if is_active else 'inactive' }}">
+            <td><input type="checkbox" name="families" value="{{ family }}" {{ 'checked' if is_active else '' }}></td>
+            <td class="family-name">{{ family }} <span class="pct">({{ info.common }})</span></td>
+            <td class="num">{{ stats.get('correct', 0) }}</td>
+            <td class="num">{{ stats.get('total', 0) }}</td>
+            <td class="bar-cell">
+                {% set total = stats.get('total', 0) %}
+                {% set pct = (stats.get('correct', 0) / total * 100) | int if total > 0 else 0 %}
+                <div class="bar-bg"><div class="bar-fill" style="width: {{ pct }}%"></div></div>
+                <span class="pct">{{ pct }}%</span>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </form>
+    <div class="actions">
+        <button type="submit" form="family-form" class="btn">Save Families</button>
+        <a href="{{ url_for('quiz') }}" class="btn">Back to Quiz</a>
+    </div>
+{% endblock %}
