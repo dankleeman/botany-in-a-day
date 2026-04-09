@@ -1,5 +1,8 @@
 # Botany in a Day
 
+[![CI](https://github.com/dankleeman/botany-in-a-day/actions/workflows/ci.yml/badge.svg)](https://github.com/dankleeman/botany-in-a-day/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/github/license/dankleeman/botany-in-a-day)](https://github.com/dankleeman/botany-in-a-day/blob/main/LICENSE)
+
 A web-based plant family quiz inspired by Thomas Elpel's [*Botany in a Day*](https://hopspress.com/Books/Botany_in_a_Day.htm). Test your ability to identify the 8 starter plant families using real observation photos from [iNaturalist](https://www.inaturalist.org/).
 
 ## How It Works
