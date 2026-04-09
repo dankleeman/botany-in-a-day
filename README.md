@@ -12,32 +12,6 @@ Each quiz question fetches a random research-grade plant observation from iNatur
 ### Privacy
 This app is entirely session-based. There are no accounts, no databases, and no persistent storage. Quiz state (score, stats) lives in your browser's session cookie and disappears when you close the tab. Nothing is tracked or logged.
 
-## Families
-At launch time the server loads all available families and their inaturalist taxa_id from the src/families.toml file. By default this file only contains the eight tutorial families and they are enabled by default. The user can choose from among the enabled families to set the scope of the quiz during their session.
-
-### Default to Tutorial Families
-- **Asteraceae** — Aster / Sunflower
-- **Apiaceae** — Parsley / Carrot
-- **Brassicaceae** — Mustard
-- **Fabaceae** — Pea
-- **Lamiaceae** — Mint
-- **Liliaceae** — Lily
-- **Poaceae** — Grass
-- **Rosaceae** — Rose
-
-### Others
-The rest of the families in the book will be made available in the src/families.toml file. Uncomment them to enable them in the settings menu. Use the default variable to set whether they should be enabled by default.
-
-Here is an example additonal family entry. These can be used for arbitrary families from iNaturalist.
-
-```toml
-[[family]]
-name = "Lamiaceae"
-common = "Mint Family"
-taxon_id = 48623
-default = true # Toggled on at app launch.
-```
-
 ## How to Run
 This app is intended to be selfhosted with docker. After launching the server, open http://localhost:5000.
 
@@ -79,6 +53,32 @@ uv run
 cp .env.example .env
 # Edit .env and set a real SECRET_KEY
 docker compose up --build
+```
+
+## Families
+At launch time the server loads all available families and their inaturalist taxa_id from the src/families.toml file. By default this file only contains the eight tutorial families and they are enabled by default. The user can choose from among the enabled families to set the scope of the quiz during their session.
+
+### Default to Tutorial Families
+- **Asteraceae** — Aster / Sunflower
+- **Apiaceae** — Parsley / Carrot
+- **Brassicaceae** — Mustard
+- **Fabaceae** — Pea
+- **Lamiaceae** — Mint
+- **Liliaceae** — Lily
+- **Poaceae** — Grass
+- **Rosaceae** — Rose
+
+### Others
+The rest of the families in the book will be made available in the src/families.toml file. Uncomment them to enable them in the settings menu. Use the default variable to set whether they should be enabled by default.
+
+Here is an example additonal family entry. These can be used for arbitrary families from iNaturalist.
+
+```toml
+[[family]]
+name = "Lamiaceae"
+common = "Mint Family"
+taxon_id = 48623
+default = true # Toggled on at app launch.
 ```
 
 ### Configuration
