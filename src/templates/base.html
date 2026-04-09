@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Botany in a Day{% endblock %}</title>
+    <style>
+        {{ theme_css }}
+        .build-version {
+            position: fixed;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted2);
+            opacity: 0.6;
+            z-index: 100;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: Palatino, "Palatino Linotype", "Book Antiqua", serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.3s, color 0.3s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin: 1.5rem 0 0.5rem;
+            font-size: 1.6rem;
+            color: var(--accent);
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--muted);
+            cursor: pointer;
+            z-index: 100;
+        }
+        .theme-toggle:hover { color: var(--accent); }
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 2rem;
+            font-size: 1rem;
+            font-family: Palatino, "Palatino Linotype", "Book Antiqua", serif;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover { background: var(--accent-hover); }
+        {% block extra_css %}{% endblock %}
+    </style>
+</head>
+<body>
+    {% if not theme_locked %}
+    <a href="{{ url_for('toggle_theme') }}" class="theme-toggle" title="Toggle light/dark theme">
+        {% if is_dark %}&#9788;{% else %}&#9790;{% endif %}
+    </a>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+    {% if build_version %}
+    <div class="build-version">{{ build_version }}</div>
+    {% endif %}
+</body>
+</html>

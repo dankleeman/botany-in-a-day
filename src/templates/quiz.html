@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}Botany in a Day - Plant Family Quiz{% endblock %}
+
+{% block extra_css %}
+        .score {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+        .score a { color: var(--accent); }
+        .photo-container {
+            max-width: 500px;
+            width: 90%;
+            margin-bottom: 1.2rem;
+        }
+        .photo-container img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px var(--shadow);
+        }
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--muted);
+        }
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 90%;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        .choices button {
+            padding: 0.7rem 1rem;
+            font-size: 1rem;
+            font-family: inherit;
+            border: 2px solid var(--btn-border);
+            border-radius: 6px;
+            background: var(--btn-bg);
+            color: var(--text);
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.15s;
+        }
+        .choices button:hover { background: var(--btn-hover-bg); }
+        .choices button .common { color: var(--muted2); }
+        .result {
+            width: 90%;
+            max-width: 500px;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .result.correct { background: var(--correct-bg); border: 2px solid var(--correct-border); }
+        .result.wrong { background: var(--wrong-bg); border: 2px solid var(--wrong-border); }
+        .result.skip { background: var(--skip-bg); border: 2px solid var(--skip-border); }
+        .result h2 { margin-bottom: 0.5rem; }
+        .result .species { font-style: italic; color: var(--muted); margin-top: 0.4rem; }
+        .attribution {
+            font-size: 0.8rem;
+            color: var(--muted2);
+            margin-top: 0.3rem;
+            margin-bottom: 1rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        .attribution a { color: var(--muted); }
+        .error { color: #c00; margin: 2rem; }
+        .intro {
+            font-size: 0.95rem;
+            color: var(--muted);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+{% endblock %}
+
+{% block content %}
+    <h1>Botany in a Day</h1>
+    <div class="score">
+        Question {{ question_num }} &middot; Score: {{ score }}/{{ total }}
+        {% if total > 0 %} ({{ (score / total * 100) | int }}%){% endif %}
+        &middot; <a href="{{ url_for('stats') }}">Stats &amp; Settings</a>
+    </div>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+        <a href="{{ url_for('quiz') }}" class="btn" style="margin-top: 1rem;">Try Again</a>
+    {% elif result is not none %}
+        <div class="photo-container">
+            <img src="{{ photo_url }}" alt="Plant photo">
+        </div>
+        {% if attribution %}
+        <div class="attribution">{{ attribution }}{% if obs_url %} &middot; <a href="{{ obs_url }}" target="_blank">view on iNaturalist</a>{% endif %}</div>
+        {% endif %}
+        <div class="result {{ 'skip' if result == 'skip' else ('correct' if result else 'wrong') }}">
+            {% if result == 'skip' %}
+                <h2>Skipped</h2>
+            {% elif result %}
+                <h2>Correct!</h2>
+            {% else %}
+                <h2>Wrong</h2>
+                <p>You chose {{ chosen_family }}.</p>
+            {% endif %}
+            <p>Family: <strong>{{ correct_family }}</strong> ({{ correct_common }})</p>
+            <p class="species">{{ species }}</p>
+        </div>
+        <a href="{{ url_for('quiz') }}" class="btn" style="margin-top: 1rem;">Next Question</a>
+    {% else %}
+        <div class="photo-container">
+            <img src="{{ photo_url }}" alt="Plant photo">
+        </div>
+        {% if attribution %}
+        <div class="attribution">{{ attribution }}{% if obs_url %} &middot; <a href="{{ obs_url }}" target="_blank">view on iNaturalist</a>{% endif %}</div>
+        {% endif %}
+        {% if question_num == 1 %}
+        <p class="intro">Identify the plant family from a real iNaturalist observation. Pick the family you think it belongs to, or skip to see the answer.</p>
+        {% endif %}
+        <p class="question">Which family does this plant belong to?</p>
+        <div class="choices">
+            {% for sci, info in families.items() if sci in active_families %}
+                <form method="post" action="{{ url_for('answer') }}" style="margin:0">
+                    <input type="hidden" name="answer" value="{{ sci }}">
+                    <button type="submit">{{ sci }} <span class="common">&mdash; {{ info.common }}</span></button>
+                </form>
+            {% endfor %}
+            <form method="post" action="{{ url_for('answer') }}" style="margin:0">
+                <input type="hidden" name="answer" value="_skip">
+                <button type="submit" style="border-color:var(--muted2);color:var(--muted2);text-align:center">I don't know &mdash; show me the answer</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

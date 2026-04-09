@@ -1,0 +1,50 @@
+[[family]]
+name = "Asteraceae"
+common = "Aster / Sunflower Family"
+taxon_id = 47604
+default = true
+
+[[family]]
+name = "Apiaceae"
+common = "Parsley / Carrot Family"
+taxon_id = 48699
+default = true
+
+[[family]]
+name = "Brassicaceae"
+common = "Mustard Family"
+taxon_id = 47204
+default = true
+
+[[family]]
+name = "Fabaceae"
+common = "Pea Family"
+taxon_id = 47122
+default = true
+
+[[family]]
+name = "Lamiaceae"
+common = "Mint Family"
+taxon_id = 48623
+default = true
+
+[[family]]
+name = "Liliaceae"
+common = "Lily Family"
+taxon_id = 47328
+default = true
+
+[[family]]
+name = "Poaceae"
+common = "Grass Family"
+taxon_id = 47434
+default = true
+
+[[family]]
+name = "Rosaceae"
+common = "Rose Family"
+taxon_id = 47148
+default = true
+
+# Uncomment to add more families as quiz options:
+
