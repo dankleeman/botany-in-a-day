@@ -46,8 +46,23 @@ docker run -e SECRET_KEY=your-secret-here -p 5000:5000 dankleeman/botany-in-a-da
 ```
 
 #### Docker Compose
+It is recommended to use a .env from the .env.example.
+
+```bash
+cp .env.example .env
+```
+
+Then after setting your secret key in the .env file you can have your docker-compose.yml file point to that.
+
 ```yml
-XXX
+services:
+  botany:
+    image: dankleeman/botany-in-a-day-test:latest
+    container_name: botany-in-a-day
+    ports:
+      - "5000:5000"
+    env_file: .env
+    restart: unless-stopped
 ```
 
 ### Running From Source
