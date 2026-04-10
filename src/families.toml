@@ -46,5 +46,531 @@ common = "Rose Family"
 taxon_id = 47148
 default = true
 
-# Uncomment to add more families as quiz options:
+## Uncomment to add more families as quiz options:
+# [[family]]
+# name = "Aizoaceae"
+# common = "Stone Plants"
+# taxon_id = 49320
+# default = false
 
+# [[family]]
+# name = "Amaryllidaceae"
+# common = "Amaryllis, Onions, And Allies"
+# taxon_id = 55849
+# default = false
+
+# [[family]]
+# name = "Anacardiaceae"
+# common = "Cashew Family"
+# taxon_id = 48874
+# default = false
+
+# [[family]]
+# name = "Apocynaceae"
+# common = "Dogbane Family"
+# taxon_id = 47362
+# default = false
+
+# [[family]]
+# name = "Araceae"
+# common = "Arum Family"
+# taxon_id = 48536
+# default = false
+
+# [[family]]
+# name = "Araliaceae"
+# common = "Ivy Family"
+# taxon_id = 52849
+# default = false
+
+# [[family]]
+# name = "Arecaceae"
+# common = "Palms"
+# taxon_id = 48867
+# default = false
+
+# [[family]]
+# name = "Aristolochiaceae"
+# common = "Birthwort Family"
+# taxon_id = 52860
+# default = false
+
+# [[family]]
+# name = "Asparagaceae"
+# common = "Agave And Allies"
+# taxon_id = 47599
+# default = false
+
+# [[family]]
+# name = "Berberidaceae"
+# common = "Barberry Family"
+# taxon_id = 49289
+# default = false
+
+# [[family]]
+# name = "Balsaminaceae"
+# common = "Balsam Family"
+# taxon_id = 47890
+# default = false
+
+# [[family]]
+# name = "Betulaceae"
+# common = "Birch Family"
+# taxon_id = 49155
+# default = false
+
+# [[family]]
+# name = "Boraginaceae"
+# common = "Borage Family"
+# taxon_id = 48150
+# default = false
+
+# [[family]]
+# name = "Cactaceae"
+# common = "Cacti"
+# taxon_id = 47903
+# default = false
+
+# [[family]]
+# name = "Campanulaceae"
+# common = "Bellflower Family"
+# taxon_id = 48040
+# default = false
+
+# [[family]]
+# name = "Cannabaceae"
+# common = "Hackberry Family"
+# taxon_id = 53781
+# default = false
+
+# [[family]]
+# name = "Caprifoliaceae"
+# common = "Honeysuckle Family"
+# taxon_id = 48527
+# default = false
+
+# [[family]]
+# name = "Caryophyllaceae"
+# common = "Pink Family"
+# taxon_id = 48567
+# default = false
+
+# [[family]]
+# name = "Celastraceae"
+# common = "Staff-Vine Family"
+# taxon_id = 47539
+# default = false
+
+# [[family]]
+# name = "Cleomaceae"
+# common = "Spider Flower Family"
+# taxon_id = 71409
+# default = false
+
+# [[family]]
+# name = "Commelinaceae"
+# common = "Spiderworts"
+# taxon_id = 49147
+# default = false
+
+# [[family]]
+# name = "Convolvulaceae"
+# common = "Bindweed Family"
+# taxon_id = 52345
+# default = false
+
+# [[family]]
+# name = "Cornaceae"
+# common = "Dogwood Family"
+# taxon_id = 47194
+# default = false
+
+# [[family]]
+# name = "Crassulaceae"
+# common = "Stonecrop Family"
+# taxon_id = 51890
+# default = false
+
+# [[family]]
+# name = "Cucurbitaceae"
+# common = "Gourd Family"
+# taxon_id = 48620
+# default = false
+
+# [[family]]
+# name = "Cupressaceae"
+# common = "Cypress Family"
+# taxon_id = 47374
+# default = false
+
+# [[family]]
+# name = "Cyperaceae"
+# common = "Sedges"
+# taxon_id = 47161
+# default = false
+
+# [[family]]
+# name = "Dryopteridaceae"
+# common = "Shieldfern Family"
+# taxon_id = 47753
+# default = false
+
+# [[family]]
+# name = "Elaeagnaceae"
+# common = "Oleaster Family"
+# taxon_id = 64695
+# default = false
+
+# [[family]]
+# name = "Ephedraceae"
+# common = "Jointfir Family"
+# taxon_id = 53880
+# default = false
+
+# [[family]]
+# name = "Equisetaceae"
+# common = "Horsetail Family"
+# taxon_id = 47747
+# default = false
+
+# [[family]]
+# name = "Ericaceae"
+# common = "Heath Family"
+# taxon_id = 133387
+# default = false
+
+# [[family]]
+# name = "Euphorbiaceae"
+# common = "Spurge Family"
+# taxon_id = 51821
+# default = false
+
+# [[family]]
+# name = "Fagaceae"
+# common = "Beech Family"
+# taxon_id = 47852
+# default = false
+
+# [[family]]
+# name = "Garryaceae"
+# common = "Silktassel Family"
+# taxon_id = 53401
+# default = false
+
+# [[family]]
+# name = "Gentianaceae"
+# common = "Gentian Family"
+# taxon_id = 56235
+# default = false
+
+# [[family]]
+# name = "Geraniaceae"
+# common = "Geranium Family"
+# taxon_id = 47689
+# default = false
+
+# [[family]]
+# name = "Grossulariaceae"
+# common = "Gooseberry Family"
+# taxon_id = 47131
+# default = false
+
+# [[family]]
+# name = "Hydrangeaceae"
+# common = "Hydrangea Family"
+# taxon_id = 52469
+# default = false
+
+# [[family]]
+# name = "Hypericaceae"
+# common = "St. John'S Wort Family"
+# taxon_id = 71412
+# default = false
+
+# [[family]]
+# name = "Iridaceae"
+# common = "Iris Family"
+# taxon_id = 47781
+# default = false
+
+# [[family]]
+# name = "Juglandaceae"
+# common = "Walnut Family"
+# taxon_id = 54497
+# default = false
+
+# [[family]]
+# name = "Juncaginaceae"
+# common = "Arrowgrass Family"
+# taxon_id = 60266
+# default = false
+
+# [[family]]
+# name = "Linaceae"
+# common = "Flax Family"
+# taxon_id = 51308
+# default = false
+
+# [[family]]
+# name = "Loasaceae"
+# common = "Stickleaf Family"
+# taxon_id = 53922
+# default = false
+
+# [[family]]
+# name = "Lycopodiaceae"
+# common = "Clubmosses And Firmosses"
+# taxon_id = 47621
+# default = false
+
+# [[family]]
+# name = "Lythraceae"
+# common = "Lythrum Family"
+# taxon_id = 58935
+# default = false
+
+# [[family]]
+# name = "Malvaceae"
+# common = "Mallow And Hibiscus Family"
+# taxon_id = 48797
+# default = false
+
+# [[family]]
+# name = "Melanthiaceae"
+# common = "Herb-Paris, False Hellebores, Trilliums And Allies"
+# taxon_id = 49464
+# default = false
+
+# [[family]]
+# name = "Montiaceae"
+# common = "Pussypaw Family"
+# taxon_id = 71417
+# default = false
+
+# [[family]]
+# name = "Moraceae"
+# common = "Mulberry And Fig Family"
+# taxon_id = 50998
+# default = false
+
+# [[family]]
+# name = "Musaceae"
+# common = "Banana Family"
+# taxon_id = 62910
+# default = false
+
+# [[family]]
+# name = "Nyctaginaceae"
+# common = "Four O'Clock Family"
+# taxon_id = 50256
+# default = false
+
+# [[family]]
+# name = "Nymphaeaceae"
+# common = "Waterlily Family"
+# taxon_id = 51121
+# default = false
+
+# [[family]]
+# name = "Oleaceae"
+# common = "Olive Family"
+# taxon_id = 47733
+# default = false
+
+# [[family]]
+# name = "Onagraceae"
+# common = "Evening Primrose Family"
+# taxon_id = 47790
+# default = false
+
+# [[family]]
+# name = "Orchidaceae"
+# common = "Orchids"
+# taxon_id = 47217
+# default = false
+
+# [[family]]
+# name = "Orobanchaceae"
+# common = "Broomrape Family"
+# taxon_id = 47322
+# default = false
+
+# [[family]]
+# name = "Oxalidaceae"
+# common = "Woodsorrel Family"
+# taxon_id = 47759
+# default = false
+
+# [[family]]
+# name = "Papaveraceae"
+# common = "Poppy Family"
+# taxon_id = 47332
+# default = false
+
+# [[family]]
+# name = "Phrymaceae"
+# common = "Lopseed Family"
+# taxon_id = 64552
+# default = false
+
+# [[family]]
+# name = "Pinaceae"
+# common = "Pine Family"
+# taxon_id = 47562
+# default = false
+
+# [[family]]
+# name = "Plantaginaceae"
+# common = "Plantain Family"
+# taxon_id = 50638
+# default = false
+
+# [[family]]
+# name = "Polemoniaceae"
+# common = "Phlox Family"
+# taxon_id = 48932
+# default = false
+
+# [[family]]
+# name = "Polygalaceae"
+# common = "Milkworts"
+# taxon_id = 61207
+# default = false
+
+# [[family]]
+# name = "Polygonaceae"
+# common = "Knotweed Family"
+# taxon_id = 48382
+# default = false
+
+# [[family]]
+# name = "Portulacaceae"
+# common = "Purslane Family"
+# taxon_id = 47365
+# default = false
+
+# [[family]]
+# name = "Potamogetonaceae"
+# common = "Pondweed Family"
+# taxon_id = 59109
+# default = false
+
+# [[family]]
+# name = "Primulaceae"
+# common = "Primrose Family"
+# taxon_id = 48064
+# default = false
+
+# [[family]]
+# name = "Ranunculaceae"
+# common = "Buttercup Family"
+# taxon_id = 48231
+# default = false
+
+# [[family]]
+# name = "Rhamnaceae"
+# common = "Buckthorn Family"
+# taxon_id = 49041
+# default = false
+
+# [[family]]
+# name = "Rubiaceae"
+# common = "Madder Family"
+# taxon_id = 47693
+# default = false
+
+# [[family]]
+# name = "Rutaceae"
+# common = "Citrus Family"
+# taxon_id = 50623
+# default = false
+
+# [[family]]
+# name = "Salicaceae"
+# common = "Willow Family"
+# taxon_id = 47567
+# default = false
+
+# [[family]]
+# name = "Santalaceae"
+# common = "Sandalwood Family"
+# taxon_id = 59992
+# default = false
+
+# [[family]]
+# name = "Sarraceniaceae"
+# common = "New World Pitcher Plants"
+# taxon_id = 52649
+# default = false
+
+# [[family]]
+# name = "Saxifragaceae"
+# common = "Saxifrage Family"
+# taxon_id = 48386
+# default = false
+
+# [[family]]
+# name = "Scrophulariaceae"
+# common = "Figwort Family"
+# taxon_id = 47151
+# default = false
+
+# [[family]]
+# name = "Simmondsiaceae"
+# common = "Jojoba Family"
+# taxon_id = 71423
+# default = false
+
+# [[family]]
+# name = "Solanaceae"
+# common = "Nightshade Family"
+# taxon_id = 48516
+# default = false
+
+# [[family]]
+# name = "Tamaricaceae"
+# common = "Tamarisk Family"
+# taxon_id = 51304
+# default = false
+
+# [[family]]
+# name = "Taxaceae"
+# common = "Yew Family"
+# taxon_id = 47556
+# default = false
+
+# [[family]]
+# name = "Ulmaceae"
+# common = "Elm Family"
+# taxon_id = 53548
+# default = false
+
+# [[family]]
+# name = "Urticaceae"
+# common = "Nettle Family"
+# taxon_id = 51885
+# default = false
+
+# [[family]]
+# name = "Verbenaceae"
+# common = "Verbena Family"
+# taxon_id = 49194
+# default = false
+
+# [[family]]
+# name = "Violaceae"
+# common = "Violet Family"
+# taxon_id = 50828
+# default = false
+
+# [[family]]
+# name = "Vitaceae"
+# common = "Grape Family"
+# taxon_id = 50279
+# default = false
+
+# [[family]]
+# name = "Zygophyllaceae"
+# common = "Caltrops"
+# taxon_id = 68207
+# default = false
