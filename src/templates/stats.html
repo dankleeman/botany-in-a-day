@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Session Stats - Botany in a Day{% endblock %}
+{% block title %}Session Stats & Settings - Botany in a Day{% endblock %}
 
 {% block extra_css %}
         .overall {
@@ -75,18 +75,17 @@
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
         }
-        .inactive { opacity: 0.5; }
 {% endblock %}
 
 {% block content %}
-    <h1>Session Stats</h1>
+    <h1>Session Stats & Settings</h1>
     <div class="overall">
         Score: {{ score }}/{{ total }}
         {% if total > 0 %} ({{ (score / total * 100) | int }}%){% endif %}
     </div>
 
-    <h2 class="section-heading">Families</h2>
-    <form id="family-form" method="post" action="{{ url_for('update_families') }}">
+    {% macro family_table(heading, entries, checked) %}
+    <h2 class="section-heading">{{ heading }}</h2>
     <table>
         <tr>
             <th>Active</th>
@@ -95,23 +94,32 @@
             <th>Total</th>
             <th class="bar-cell">Accuracy</th>
         </tr>
-        {% for family, info in families.items() | sort %}
-        {% set stats = family_stats.get(family, {}) %}
-        {% set is_active = family in active_families %}
-        <tr class="{{ '' if is_active else 'inactive' }}">
-            <td><input type="checkbox" name="families" value="{{ family }}" {{ 'checked' if is_active else '' }}></td>
+        {% for family, info in entries %}
+        {% set fstats = family_stats.get(family, {}) %}
+        <tr>
+            <td><input type="checkbox" name="families" value="{{ family }}" {{ 'checked' if checked else '' }}></td>
             <td class="family-name">{{ family }} <span class="pct">({{ info.common }})</span></td>
-            <td class="num">{{ stats.get('correct', 0) }}</td>
-            <td class="num">{{ stats.get('total', 0) }}</td>
+            <td class="num">{{ fstats.get('correct', 0) }}</td>
+            <td class="num">{{ fstats.get('total', 0) }}</td>
             <td class="bar-cell">
-                {% set total = stats.get('total', 0) %}
-                {% set pct = (stats.get('correct', 0) / total * 100) | int if total > 0 else 0 %}
+                {% set ftotal = fstats.get('total', 0) %}
+                {% set pct = (fstats.get('correct', 0) / ftotal * 100) | int if ftotal > 0 else 0 %}
                 <div class="bar-bg"><div class="bar-fill" style="width: {{ pct }}%"></div></div>
                 <span class="pct">{{ pct }}%</span>
             </td>
         </tr>
         {% endfor %}
     </table>
+    {% endmacro %}
+
+    {% set active_entries = families.items() | selectattr('0', 'in', active_families) | sort %}
+    {% set inactive_entries = families.items() | rejectattr('0', 'in', active_families) | sort %}
+
+    <form id="family-form" method="post" action="{{ url_for('update_families') }}">
+        {{ family_table("Selected Families", active_entries, true) }}
+        {% if inactive_entries | list | length > 0 %}
+        {{ family_table("Other Families", inactive_entries, false) }}
+        {% endif %}
     </form>
     <div class="actions">
         <button type="submit" form="family-form" class="btn">Save Families</button>
