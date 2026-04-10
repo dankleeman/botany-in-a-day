@@ -1,5 +1,6 @@
 import json
 import random
+import time
 import urllib.error
 import urllib.request
 
@@ -11,6 +12,10 @@ API_BASE = "https://api.inaturalist.org/v1"
 # Per-family queue of pre-fetched observations
 _observation_queues: dict[str, list[dict]] = {}
 
+_RETRYABLE_STATUS = {429, 500, 502, 503, 504}
+_MAX_RETRIES = 4
+_BACKOFF_BASE = 1.0  # seconds
+
 
 class InatAPIError(Exception):
     pass
@@ -18,11 +23,20 @@ class InatAPIError(Exception):
 
 def fetch_json(url: str) -> dict:
     req = urllib.request.Request(url, headers={"User-Agent": "BotanyQuiz/1.0"})
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            return json.loads(resp.read().decode())
-    except urllib.error.URLError as e:
-        raise InatAPIError(f"iNaturalist unavailable: {e.reason}") from e
+    last_exc: Exception | None = None
+    for attempt in range(_MAX_RETRIES):
+        if attempt:
+            time.sleep(_BACKOFF_BASE * (2 ** (attempt - 1)))
+        try:
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                return json.loads(resp.read().decode())
+        except urllib.error.HTTPError as e:
+            last_exc = e
+            if e.code not in _RETRYABLE_STATUS:
+                raise InatAPIError(f"iNaturalist error {e.code}: {e.reason}") from e
+        except urllib.error.URLError as e:
+            last_exc = e
+    raise InatAPIError(f"iNaturalist unavailable after {_MAX_RETRIES} attempts: {last_exc}") from last_exc
 
 
 def _fetch_batch(taxon_id: int) -> list[dict]:
