@@ -16,13 +16,13 @@ This app is entirely session-based. There are no accounts, no databases, and no 
 This app is intended to be selfhosted with docker. After launching the server, open http://localhost:5000.
 
 ### Selfhosting
-#### Docker Run
+**Docker Run**
 ```bash
 docker pull dankleeman/botany-in-a-day
 docker run -e SECRET_KEY=your-secret-here -p 5000:5000 dankleeman/botany-in-a-day
 ```
 
-#### Docker Compose
+**Docker Compose**
 It is recommended to use a .env from the .env.example.
 
 ```bash
@@ -43,12 +43,12 @@ services:
 ```
 
 ### Running From Source
-#### Flask Debug Mode
+**Flask Debug Mode**
 ```bash
 uv run 
 ```
 
-#### Docker Compose
+**Docker Compose**
 ```bash
 cp .env.example .env
 # Edit .env and set a real SECRET_KEY
@@ -75,11 +75,39 @@ Here is an example additonal family entry. These can be used for arbitrary famil
 
 ```toml
 [[family]]
-name = "Lamiaceae"
-common = "Mint Family"
-taxon_id = 48623
+name = "Apocynaceae"
+common = "Dogbane"
+taxon_id = 47362
 default = true # Toggled on at app launch.
 ```
+
+### Using a Custom families.toml
+
+The repo ships a default `families.toml`, but you can supply your own by mounting a local file over `/app/families.toml` inside the container.
+
+**Docker Run**
+```bash
+docker run -e SECRET_KEY=your-secret-here \
+  -p 5000:5000 \
+  -v /path/to/your/families.toml:/app/families.toml:ro \
+  dankleeman/botany-in-a-day
+```
+
+**Docker Compose**
+```yml
+services:
+  botany:
+    image: dankleeman/botany-in-a-day:latest
+    container_name: botany-in-a-day
+    ports:
+      - "5000:5000"
+    env_file: .env
+    restart: unless-stopped
+    volumes:
+      - ./families.toml:/app/families.toml:ro
+```
+
+Place your edited `families.toml` next to the compose file (or adjust the host path) and the container will use it instead of the built-in default.
 
 ### Configuration
 
