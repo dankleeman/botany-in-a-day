@@ -66,12 +66,6 @@ default = true
 # default = false
 
 # [[family]]
-# name = "Apiaceae"
-# common = "Carrot Family"
-# taxon_id = 48699
-# default = false
-
-# [[family]]
 # name = "Apocynaceae"
 # common = "Dogbane Family"
 # taxon_id = 47362
@@ -108,12 +102,6 @@ default = true
 # default = false
 
 # [[family]]
-# name = "Asteraceae"
-# common = "Sunflowers, Daisies, Asters, And Allies"
-# taxon_id = 47604
-# default = false
-
-# [[family]]
 # name = "Berberidaceae"
 # common = "Barberry Family"
 # taxon_id = 49289
@@ -135,12 +123,6 @@ default = true
 # name = "Boraginaceae"
 # common = "Borage Family"
 # taxon_id = 48150
-# default = false
-
-# [[family]]
-# name = "Brassicaceae"
-# common = "Mustard Family"
-# taxon_id = 47204
 # default = false
 
 # [[family]]
@@ -264,12 +246,6 @@ default = true
 # default = false
 
 # [[family]]
-# name = "Fabaceae"
-# common = "Legumes"
-# taxon_id = 47122
-# default = false
-
-# [[family]]
 # name = "Fagaceae"
 # common = "Beech Family"
 # taxon_id = 47852
@@ -327,18 +303,6 @@ default = true
 # name = "Juncaginaceae"
 # common = "Arrowgrass Family"
 # taxon_id = 60266
-# default = false
-
-# [[family]]
-# name = "Lamiaceae"
-# common = "Mint Family"
-# taxon_id = 48623
-# default = false
-
-# [[family]]
-# name = "Liliaceae"
-# common = "Lily Family"
-# taxon_id = 47328
 # default = false
 
 # [[family]]
@@ -462,12 +426,6 @@ default = true
 # default = false
 
 # [[family]]
-# name = "Poaceae"
-# common = "Grasses"
-# taxon_id = 47434
-# default = false
-
-# [[family]]
 # name = "Polemoniaceae"
 # common = "Phlox Family"
 # taxon_id = 48932
@@ -513,12 +471,6 @@ default = true
 # name = "Rhamnaceae"
 # common = "Buckthorn Family"
 # taxon_id = 49041
-# default = false
-
-# [[family]]
-# name = "Rosaceae"
-# common = "Rose Family"
-# taxon_id = 47148
 # default = false
 
 # [[family]]
@@ -622,4 +574,3 @@ default = true
 # common = "Caltrops"
 # taxon_id = 68207
 # default = false
-
