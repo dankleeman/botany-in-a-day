@@ -8,11 +8,17 @@
             color: var(--muted);
             margin: 0.5rem 0 1.5rem;
         }
-        table {
-            border-collapse: collapse;
+        .table-scroll {
             width: 90%;
             max-width: 600px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             margin-bottom: 2rem;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 420px;
         }
         th, td {
             padding: 0.6rem 0.8rem;
@@ -86,6 +92,7 @@
 
     {% macro family_table(heading, entries, checked) %}
     <h2 class="section-heading">{{ heading }}</h2>
+    <div class="table-scroll">
     <table>
         <tr>
             <th>Active</th>
@@ -110,6 +117,7 @@
         </tr>
         {% endfor %}
     </table>
+    </div>
     {% endmacro %}
 
     {% set active_entries = families.items() | selectattr('0', 'in', active_families) | sort %}
