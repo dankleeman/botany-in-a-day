@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added additional but commented out families to the families.toml file
 - Updated README with section to describe how to supply custom families.toml 
+- Added horizontal scrolling support on the Stats & Settings page targeting mobile use
+- Added exponential backoff to iNaturalist API calls to handle large numbers of starting families.
 
 ## v0.2.0 - 2025-04-09
 ### Added
