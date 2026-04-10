@@ -36,7 +36,9 @@ def fetch_json(url: str) -> dict:
                 raise InatAPIError(f"iNaturalist error {e.code}: {e.reason}") from e
         except urllib.error.URLError as e:
             last_exc = e
-    raise InatAPIError(f"iNaturalist unavailable after {_MAX_RETRIES} attempts: {last_exc}") from last_exc
+    raise InatAPIError(
+        f"iNaturalist unavailable after {_MAX_RETRIES} attempts: {last_exc}"
+    ) from last_exc
 
 
 def _fetch_batch(taxon_id: int) -> list[dict]:
