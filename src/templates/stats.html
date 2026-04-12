@@ -122,6 +122,10 @@
     {% set active_entries = families.items() | selectattr('0', 'in', active_families) | sort %}
     {% set inactive_entries = families.items() | rejectattr('0', 'in', active_families) | sort %}
 
+    <div class="actions">
+        <button type="submit" form="family-form" class="btn">Save Families</button>
+        <a href="{{ url_for('quiz') }}" class="btn">Back to Quiz</a>
+    </div>
     <form id="family-form" method="post" action="{{ url_for('update_families') }}">
         {{ family_table("Selected Families", active_entries, true) }}
         {% if inactive_entries | list | length > 0 %}
