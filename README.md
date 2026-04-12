@@ -26,6 +26,7 @@ docker run -e SECRET_KEY=your-secret-here -p 5000:5000 dankleeman/botany-in-a-da
 It is recommended to use a .env from the .env.example.
 
 ```bash
+curl -O https://raw.githubusercontent.com/dankleeman/botany-in-a-day/refs/heads/main/.env.example
 cp .env.example .env
 ```
 
