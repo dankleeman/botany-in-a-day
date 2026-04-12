@@ -5,24 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v0.4.0 - 2025-04-11
+### Fixed
+- Fixed a bug preventing horizontal scrolling on the stats & settings page on mobile.
+
+### Changed
+- Added the save and back buttons to the top of the settings page as well.
+
 ## v0.3.0 - 2025-04-10
 ### Added
-- Added additional but commented out families to the families.toml file
-- Updated README with section to describe how to supply custom families.toml 
-- Added horizontal scrolling support on the Stats & Settings page targeting mobile use
+- Added additional but commented out families to the families.toml file.
+- Updated README with section to describe how to supply custom families.toml. 
+- Added horizontal scrolling support on the Stats & Settings page targeting mobile use.
 - Added exponential backoff to iNaturalist API calls to handle large numbers of starting families.
 
 ## v0.2.0 - 2025-04-09
 ### Added
-- Error handling for iNaturalist API errors, and show a message to the user that iNat is unavailable
+- Error handling for iNaturalist API errors, and show a message to the user that iNat is unavailable.
 
 ### Changed
-- Base docker image up to python 3.14 slim
-- Updated GitHub actions to more recent versions
+- Base docker image up to python 3.14 slim.
+- Updated GitHub actions to more recent versions.
 
 ## v0.1.1 - 2025-04-08
 ### Changed
-- Reorderd the Families section in the README to be lower.
+- Reordered the Families section in the README to be lower.
 
 ### Fixed
 - Updated the gunicorn entry point to correctly target the app when running the app with docker.
@@ -30,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## v0.1.0 - 2026-04-08
 
 ### Added
-- Beta version of the app
-- MIT license
+- Beta version of the app.
+- MIT license.
 - README.md with attribution to the original book.
-- Test suite with high coverage
+- Test suite with high coverage.

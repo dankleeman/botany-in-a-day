@@ -9,8 +9,7 @@
             margin: 0.5rem 0 1.5rem;
         }
         .table-scroll {
-            width: 90%;
-            max-width: 600px;
+            width: min(90vw, 600px);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             margin-bottom: 2rem;
@@ -123,6 +122,10 @@
     {% set active_entries = families.items() | selectattr('0', 'in', active_families) | sort %}
     {% set inactive_entries = families.items() | rejectattr('0', 'in', active_families) | sort %}
 
+    <div class="actions">
+        <button type="submit" form="family-form" class="btn">Save Families</button>
+        <a href="{{ url_for('quiz') }}" class="btn">Back to Quiz</a>
+    </div>
     <form id="family-form" method="post" action="{{ url_for('update_families') }}">
         {{ family_table("Selected Families", active_entries, true) }}
         {% if inactive_entries | list | length > 0 %}
